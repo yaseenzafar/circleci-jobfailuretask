@@ -1,0 +1,16 @@
+version: 2.1
+jobs:
+  failure_job:
+    docker:
+      - image: circleci/node:13.8.0
+
+    steps:
+      - run:
+          name: Something failed
+          command: return 1
+          when: on_fail
+
+    workflows:
+      failed_job:
+        jobs:
+          - failure_job
