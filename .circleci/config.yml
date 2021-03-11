@@ -1,35 +1,18 @@
-# version: 2.1
-# jobs:
-#   failure_job:
-#     docker:
-#       - image: circleci/node:13.8.0
-
-#     steps:
-#       - run: return 1
-#       - run:
-#           name: Something failed
-#           command: echo "error"
-#           when: on_fail
-
-#     workflows:
-#       failed_job:
-#         jobs:
-#           - failure_job
-
 version: 2.1
-
 jobs:
-  my_job:
+  failure_job:
     docker:
       - image: circleci/node:13.8.0
+
     steps:
       - run: return 1
       - run:
-          name: on error
-          command: echo "Hello Error!"
+          name: Something failed
+          command: echo "error"
           when: on_fail
 
 workflows:
-  my_workflow:
+  failed_job:
     jobs:
-      - my_job
+      - failure_job
+
