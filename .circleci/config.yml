@@ -5,9 +5,10 @@ jobs:
       - image: circleci/node:13.8.0
 
     steps:
+      - run: return 1
       - run:
           name: Something failed
-          command: return 1
+          command: echo "error"
           when: on_fail
 
     workflows:
